@@ -232,6 +232,23 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			h.handleError(ErrJsnEncode, err, w)
 			return
 		}
+	case request.TYPE_HEALTH_CHECK:
+		req := &request.HealthCheck{}
+		jsnErr := json.Unmarshal(rawJson, req)
+		if jsnErr != nil {
+			h.handleError(ErrJsnDecode, jsnErr, w)
+			return
+		}
+		resp, err := h.handlers.healthCheck(req)
+		if err != nil {
+			h.handleError(err.Error(), err, w)
+			return
+		}
+		jsnOut, err = json.Marshal(resp)
+		if err != nil {
+			h.handleError(ErrJsnEncode, err, w)
+			return
+		}
 	}
 	w.WriteHeader(200)
 	_, _ = w.Write(jsnOut)

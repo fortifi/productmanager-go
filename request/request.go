@@ -15,6 +15,7 @@ const (
 	TYPE_PROVISION_REACTIVATE     Type = "provision.reactivate"
 	TYPE_PROVISION_CANCEL         Type = "provision.cancel"
 	TYPE_PROVISION_TERMINATE      Type = "provision.terminate"
+	TYPE_HEALTH_CHECK             Type = "health.check"
 )
 
 type Request struct {

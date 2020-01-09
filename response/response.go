@@ -11,6 +11,7 @@ const (
 	TYPE_PROVISION_PROCESSING Type = "provision.processing"
 	TYPE_PROVISION_FAILED     Type = "provision.failed"
 	TYPE_AVAILABILITY         Type = "availability"
+	TYPE_HEALTH_CHECK         Type = "health.check"
 )
 
 type Response struct {
