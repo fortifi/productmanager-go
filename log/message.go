@@ -22,10 +22,11 @@ type Message struct {
 }
 
 func NewMessage(messageType Type, message string, time time.Time) Message {
+	mtime := pmtime.FromTime(time)
 	return Message{
 		MessageType: messageType,
 		Message:     message,
-		Timestamp:   pmtime.FromTime(time).ForTransport(),
+		Timestamp:   mtime.ForTransport(),
 	}
 }
 
