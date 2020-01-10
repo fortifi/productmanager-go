@@ -11,6 +11,6 @@ func NewAvailabilityCheck() AvailabilityCheck {
 
 type AvailabilityCheck struct {
 	Response
-	IsAvailable      bool     `json:"isAvailable"`
-	AvailableSKUFids []string `json:"availableSkuFids"`
+	IsAvailable   bool     `json:"isAvailable"`
+	AvailableSKUs []string `json:"availableSkus"`
 }

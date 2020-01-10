@@ -20,10 +20,10 @@ const (
 
 type Request struct {
 	transport.BaseData
-	Type          Type   `json:"type"`
-	OrderFid      string `json:"orderFid"`
-	ProductFid    string `json:"productFid"`
-	ProductSkuFid string `json:"productSkuFid"`
-	PriceFid      string `json:"priceFid"`
-	CustomerFid   string `json:"customerFid"`
+	Type        Type   `json:"type"`
+	OrderFid    string `json:"orderFid"`
+	ProductFid  string `json:"productFid"`
+	ProductSku  string `json:"productSku"`
+	PriceFid    string `json:"priceFid"`
+	CustomerFid string `json:"customerFid"`
 }
