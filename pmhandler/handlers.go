@@ -6,49 +6,49 @@ import (
 )
 
 func (h *Handler) SetAvailabilityCheckHandler(handler func(*request.AvailabilityCheck) (response.AvailabilityCheck, error)) {
-	h.handlers.availabilityCheck = handler
+	h.handlers.availabilityCheck = &handler
 }
 func (h *Handler) SetAvailabilityReserveHandler(handler func(*request.AvailabilityReserve) (response.AvailabilityReserve, error)) {
-	h.handlers.availabilityReserve = handler
+	h.handlers.availabilityReserve = &handler
 }
 func (h *Handler) SetProvisionSetupHandler(handler func(*request.ProvisioningSetup) (response.Provisioning, error)) {
-	h.handlers.provisionSetup = handler
+	h.handlers.provisionSetup = &handler
 }
 func (h *Handler) SetProvisionActivateHandler(handler func(*request.ProvisioningActivate) (response.Provisioning, error)) {
-	h.handlers.provisionActivate = handler
+	h.handlers.provisionActivate = &handler
 }
 func (h *Handler) SetProvisionPropertiesSetHandler(handler func(*request.ProvisioningPropertiesSet) (response.Provisioning, error)) {
-	h.handlers.provisionPropertiesSet = handler
+	h.handlers.provisionPropertiesSet = &handler
 }
 func (h *Handler) SetProvisionModifyHandler(handler func(*request.ProvisioningModify) (response.Provisioning, error)) {
-	h.handlers.provisionModify = handler
+	h.handlers.provisionModify = &handler
 }
 func (h *Handler) SetProvisionSuspendHandler(handler func(*request.ProvisioningSuspend) (response.Provisioning, error)) {
-	h.handlers.provisionSuspend = handler
+	h.handlers.provisionSuspend = &handler
 }
 func (h *Handler) SetProvisionReactivateHandler(handler func(*request.ProvisioningReactivate) (response.Provisioning, error)) {
-	h.handlers.provisionReactivate = handler
+	h.handlers.provisionReactivate = &handler
 }
 func (h *Handler) SetProvisionCancelHandler(handler func(*request.ProvisioningCancel) (response.Provisioning, error)) {
-	h.handlers.provisionCancel = handler
+	h.handlers.provisionCancel = &handler
 }
 func (h *Handler) SetProvisionTerminateHandler(handler func(*request.ProvisioningTerminate) (response.Provisioning, error)) {
-	h.handlers.provisionTerminate = handler
+	h.handlers.provisionTerminate = &handler
 }
 func (h *Handler) SetHealthCheckHandler(handler func(*request.HealthCheck) (response.HealthCheck, error)) {
-	h.handlers.healthCheck = handler
+	h.handlers.healthCheck = &handler
 }
 
 type handlers struct {
-	availabilityCheck      func(*request.AvailabilityCheck) (response.AvailabilityCheck, error)
-	availabilityReserve    func(*request.AvailabilityReserve) (response.AvailabilityReserve, error)
-	provisionSetup         func(*request.ProvisioningSetup) (response.Provisioning, error)
-	provisionActivate      func(*request.ProvisioningActivate) (response.Provisioning, error)
-	provisionPropertiesSet func(*request.ProvisioningPropertiesSet) (response.Provisioning, error)
-	provisionModify        func(*request.ProvisioningModify) (response.Provisioning, error)
-	provisionSuspend       func(*request.ProvisioningSuspend) (response.Provisioning, error)
-	provisionReactivate    func(*request.ProvisioningReactivate) (response.Provisioning, error)
-	provisionCancel        func(*request.ProvisioningCancel) (response.Provisioning, error)
-	provisionTerminate     func(*request.ProvisioningTerminate) (response.Provisioning, error)
-	healthCheck            func(*request.HealthCheck) (response.HealthCheck, error)
+	availabilityCheck      *func(*request.AvailabilityCheck) (response.AvailabilityCheck, error)
+	availabilityReserve    *func(*request.AvailabilityReserve) (response.AvailabilityReserve, error)
+	provisionSetup         *func(*request.ProvisioningSetup) (response.Provisioning, error)
+	provisionActivate      *func(*request.ProvisioningActivate) (response.Provisioning, error)
+	provisionPropertiesSet *func(*request.ProvisioningPropertiesSet) (response.Provisioning, error)
+	provisionModify        *func(*request.ProvisioningModify) (response.Provisioning, error)
+	provisionSuspend       *func(*request.ProvisioningSuspend) (response.Provisioning, error)
+	provisionReactivate    *func(*request.ProvisioningReactivate) (response.Provisioning, error)
+	provisionCancel        *func(*request.ProvisioningCancel) (response.Provisioning, error)
+	provisionTerminate     *func(*request.ProvisioningTerminate) (response.Provisioning, error)
+	healthCheck            *func(*request.HealthCheck) (response.HealthCheck, error)
 }
