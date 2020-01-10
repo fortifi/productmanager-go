@@ -141,12 +141,10 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			respondErr = h.respond(w, resp, err)
 		}
 	}
+
 	if respondErr != nil {
 		h.logger.Print(respondErr)
-	}
-
-	if respondErr != nil && respondErr.Error() == ErrNoHandler {
-		h.handleError(ErrNoHandler, respondErr, w)
+		h.handleError(respondErr.Error(), respondErr, w)
 	}
 
 	return
@@ -154,15 +152,13 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) error {
 	if err != nil {
-		h.handleError(err.Error(), err, w)
 		return err
 	}
 
 	jsnOut, err := json.Marshal(resp)
-	h.logger.Print(resp, jsnOut, err)
 	if err != nil {
-		h.handleError(ErrJsnEncode, err, w)
-		return err
+		h.logger.Print(err)
+		return errors.New(ErrJsnEncode)
 	}
 
 	w.WriteHeader(200)
