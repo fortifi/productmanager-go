@@ -32,15 +32,15 @@ func NewHandlerWithKey(productManagerKey string) *Handler {
 	return NewHandler(FixedKeyHandler{Key: productManagerKey})
 }
 
+func (h *Handler) SetLogger(logger *log.Logger) { h.logger = logger }
+
 func (h *Handler) handleErrorWithCode(message string, err error, w http.ResponseWriter, statusCode int) {
 	h.logger.Println(err)
 	http.Error(w, message, statusCode)
-	return
 }
 
 func (h *Handler) handleError(message string, err error, w http.ResponseWriter) {
 	h.handleErrorWithCode(message, err, w, 500)
-	return
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -142,7 +142,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if respondErr != nil {
-		log.Print(respondErr)
+		h.logger.Print(respondErr)
 	}
 
 	if respondErr != nil && respondErr.Error() == ErrNoHandler {
@@ -159,7 +159,7 @@ func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) er
 	}
 
 	jsnOut, err := json.Marshal(resp)
-	log.Print(resp, jsnOut, err)
+	h.logger.Print(resp, jsnOut, err)
 	if err != nil {
 		h.handleError(ErrJsnEncode, err, w)
 		return err
@@ -167,5 +167,8 @@ func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) er
 
 	w.WriteHeader(200)
 	_, _ = w.Write(jsnOut)
+
+	h.logger.Print("Output Result: ", string(jsnOut))
+
 	return nil
 }
