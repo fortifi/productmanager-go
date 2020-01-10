@@ -156,6 +156,7 @@ func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) er
 	}
 
 	jsnOut, err := json.Marshal(resp)
+	log.Print(resp, jsnOut, err)
 	if err != nil {
 		h.handleError(ErrJsnEncode, err, w)
 		return err
