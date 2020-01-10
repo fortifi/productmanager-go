@@ -141,6 +141,9 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			respondErr = h.respond(w, resp, err)
 		}
 	}
+	if respondErr != nil {
+		log.Print(respondErr)
+	}
 
 	if respondErr != nil && respondErr.Error() == ErrNoHandler {
 		h.handleError(ErrNoHandler, respondErr, w)
