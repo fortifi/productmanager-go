@@ -60,196 +60,96 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	jsnOut := []byte{}
+	var respondErr error
+	var jsnErr error
 	switch baseReq.Type {
 	case request.TYPE_AVAILABILITY_CHECK:
 		req := &request.AvailabilityCheck{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.availabilityCheck(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.availabilityCheck(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_AVAILABILITY_RESERVE:
 		req := &request.AvailabilityReserve{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.availabilityReserve(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.availabilityReserve(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_SETUP:
 		req := &request.ProvisioningSetup{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionSetup(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionSetup(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_ACTIVATE:
 		req := &request.ProvisioningActivate{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionActivate(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionActivate(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_PROPERTIES_SET:
 		req := &request.ProvisioningPropertiesSet{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionPropertiesSet(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionPropertiesSet(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_MODIFY:
 		req := &request.ProvisioningModify{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionModify(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionModify(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_SUSPEND:
 		req := &request.ProvisioningSuspend{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionSuspend(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionSuspend(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_REACTIVATE:
 		req := &request.ProvisioningReactivate{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionReactivate(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionReactivate(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_CANCEL:
 		req := &request.ProvisioningCancel{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionCancel(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionCancel(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_PROVISION_TERMINATE:
 		req := &request.ProvisioningTerminate{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.provisionTerminate(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.provisionTerminate(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	case request.TYPE_HEALTH_CHECK:
 		req := &request.HealthCheck{}
-		jsnErr := json.Unmarshal(rawJson, req)
-		if jsnErr != nil {
-			h.handleError(ErrJsnDecode, jsnErr, w)
-			return
-		}
-		resp, err := h.handlers.healthCheck(req)
-		if err != nil {
-			h.handleError(err.Error(), err, w)
-			return
-		}
-		jsnOut, err = json.Marshal(resp)
-		if err != nil {
-			h.handleError(ErrJsnEncode, err, w)
-			return
+		if jsnErr = json.Unmarshal(rawJson, req); jsnErr == nil {
+			resp, err := h.handlers.healthCheck(req)
+			respondErr = h.respond(w, resp, err)
 		}
 	}
+
+	if respondErr != nil {
+		h.handleError(ErrJsnDecode, jsnErr, w)
+	}
+	return
+}
+
+func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) error {
+	if err != nil {
+		h.handleError(err.Error(), err, w)
+		return err
+	}
+
+	jsnOut, err := json.Marshal(resp)
+	if err != nil {
+		h.handleError(ErrJsnEncode, err, w)
+		return err
+	}
+
 	w.WriteHeader(200)
 	_, _ = w.Write(jsnOut)
+	return nil
 }
