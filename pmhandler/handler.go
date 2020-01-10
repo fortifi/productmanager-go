@@ -66,7 +66,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_AVAILABILITY_CHECK:
 		req := &request.AvailabilityCheck{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.availabilityCheck; callback != nil {
+			if callback := *h.handlers.availabilityCheck; h.handlers.availabilityCheck != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -74,7 +74,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_AVAILABILITY_RESERVE:
 		req := &request.AvailabilityReserve{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.availabilityReserve; callback != nil {
+			if callback := *h.handlers.availabilityReserve; h.handlers.availabilityReserve != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -82,7 +82,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_SETUP:
 		req := &request.ProvisioningSetup{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionSetup; callback != nil {
+			if callback := *h.handlers.provisionSetup; h.handlers.provisionSetup != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -90,7 +90,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_ACTIVATE:
 		req := &request.ProvisioningActivate{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionActivate; callback != nil {
+			if callback := *h.handlers.provisionActivate; h.handlers.provisionActivate != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -98,7 +98,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_PROPERTIES_SET:
 		req := &request.ProvisioningPropertiesSet{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionPropertiesSet; callback != nil {
+			if callback := *h.handlers.provisionPropertiesSet; h.handlers.provisionPropertiesSet != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -106,7 +106,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_MODIFY:
 		req := &request.ProvisioningModify{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionModify; callback != nil {
+			if callback := *h.handlers.provisionModify; h.handlers.provisionModify != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -114,7 +114,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_SUSPEND:
 		req := &request.ProvisioningSuspend{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionSuspend; callback != nil {
+			if callback := *h.handlers.provisionSuspend; h.handlers.provisionSuspend != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -122,7 +122,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_REACTIVATE:
 		req := &request.ProvisioningReactivate{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionReactivate; callback != nil {
+			if callback := *h.handlers.provisionReactivate; h.handlers.provisionReactivate != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -130,7 +130,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_CANCEL:
 		req := &request.ProvisioningCancel{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionCancel; callback != nil {
+			if callback := *h.handlers.provisionCancel; h.handlers.provisionCancel != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -138,7 +138,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_PROVISION_TERMINATE:
 		req := &request.ProvisioningTerminate{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.provisionTerminate; callback != nil {
+			if callback := *h.handlers.provisionTerminate; h.handlers.provisionTerminate != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
@@ -146,7 +146,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case request.TYPE_HEALTH_CHECK:
 		req := &request.HealthCheck{}
 		if respondErr = json.Unmarshal(rawJson, req); respondErr == nil {
-			if callback := *h.handlers.healthCheck; callback != nil {
+			if callback := *h.handlers.healthCheck; h.handlers.healthCheck != nil {
 				resp, err := callback(req)
 				respondErr = h.respond(w, resp, err)
 			}
