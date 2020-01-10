@@ -1,6 +1,9 @@
 package response
 
-import "github.com/fortifi/productmanager-go/log"
+import (
+	"github.com/fortifi/productmanager-go/log"
+	"github.com/fortifi/productmanager-go/pmtime"
+)
 
 type Provisioning struct {
 	Response
@@ -10,6 +13,7 @@ type Provisioning struct {
 
 func NewProvisioningSuccess(message string) Provisioning {
 	r := Provisioning{}
+	r.Timestamp = pmtime.Now().ForTransport()
 	r.Message = message
 	r.Type = TYPE_PROVISION_SUCCESS
 	return r
@@ -17,6 +21,7 @@ func NewProvisioningSuccess(message string) Provisioning {
 
 func NewProvisioningProcessing(message string) Provisioning {
 	r := Provisioning{}
+	r.Timestamp = pmtime.Now().ForTransport()
 	r.Message = message
 	r.Type = TYPE_PROVISION_PROCESSING
 	return r
@@ -24,6 +29,7 @@ func NewProvisioningProcessing(message string) Provisioning {
 
 func NewProvisioningFailed(message string) Provisioning {
 	r := Provisioning{}
+	r.Timestamp = pmtime.Now().ForTransport()
 	r.Message = message
 	r.Type = TYPE_PROVISION_FAILED
 	return r
