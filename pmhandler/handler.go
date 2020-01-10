@@ -15,9 +15,10 @@ const ErrJsnEncode string = "Unable to encode response"
 const ErrNoHandler string = "Unable to handle request"
 
 type Handler struct {
-	handlers   handlers
-	keyHandler KeyHandler
-	logger     *log.Logger
+	handlers    handlers
+	keyHandler  KeyHandler
+	logger      *log.Logger
+	debugResult bool
 }
 
 func NewHandler(keyHandler KeyHandler) *Handler {
@@ -33,6 +34,7 @@ func NewHandlerWithKey(productManagerKey string) *Handler {
 }
 
 func (h *Handler) SetLogger(logger *log.Logger) { h.logger = logger }
+func (h *Handler) SetDebugResult(debug bool)    { h.debugResult = debug }
 
 func (h *Handler) handleErrorWithCode(message string, err error, w http.ResponseWriter, statusCode int) {
 	h.logger.Println(err)
@@ -144,15 +146,9 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	if jsErr != nil {
 		h.handleErrorWithCode(ErrJsnDecode, jsErr, w, 400)
-		return
-	}
-
-	if respondErr != nil {
-		h.logger.Print(respondErr)
+	} else if respondErr != nil {
 		h.handleError(respondErr.Error(), respondErr, w)
 	}
-
-	return
 }
 
 func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) error {
@@ -162,14 +158,15 @@ func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) er
 
 	jsnOut, err := json.Marshal(resp)
 	if err != nil {
-		h.logger.Print(err)
 		return errors.New(ErrJsnEncode)
 	}
 
 	w.WriteHeader(200)
 	_, _ = w.Write(jsnOut)
 
-	h.logger.Print("Output Result: ", string(jsnOut))
+	if h.debugResult {
+		h.logger.Print("Output Result: ", string(jsnOut))
+	}
 
 	return nil
 }
