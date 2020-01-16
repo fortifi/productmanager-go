@@ -23,6 +23,8 @@ func (d *BaseData) SetVerificationData(productManagerKey, transportKey string) {
 	} else if transportKey == "" {
 		transportKey = randomString(40)
 		d.TransportKey = transportKey
+	} else {
+		d.TransportKey = transportKey
 	}
 	d.VerifyHash = fmt.Sprintf("%x", md5.Sum([]byte(transportKey+productManagerKey)))
 }
