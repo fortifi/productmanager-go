@@ -21,6 +21,7 @@ const (
 type Request struct {
 	transport.BaseData
 	Type        Type   `json:"type"`
+	OrgFid      string `json:"orgFid"`
 	OrderFid    string `json:"orderFid"`
 	ProductFid  string `json:"productFid"`
 	ProductSku  string `json:"productSku"`
