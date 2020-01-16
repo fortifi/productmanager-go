@@ -17,8 +17,8 @@ const (
 
 type Message struct {
 	MessageType Type   `json:"type"`
-	Message     string `json:"Message"`
-	Timestamp   int64  `json:"Timestamp"`
+	Message     string `json:"message"`
+	Timestamp   int64  `json:"timestamp"`
 }
 
 func NewMessage(messageType Type, message string, time time.Time) Message {
