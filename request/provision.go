@@ -8,5 +8,6 @@ type Provisioning struct {
 	Configuration  map[string]string `json:"configuration"`
 	Cycle          string            `json:"cycle"`
 	PurchaseFid    string            `json:"purchaseFid"`
+	ResourceFid    string            `json:"resourceFid"`
 	UpdateUrl      string            `json:"updateUrl"`
 }
