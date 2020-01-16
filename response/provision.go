@@ -1,14 +1,14 @@
 package response
 
 import (
-	"github.com/fortifi/productmanager-go/log"
+	"github.com/fortifi/productmanager-go/pmlog"
 	"github.com/fortifi/productmanager-go/pmtime"
 )
 
 type Provisioning struct {
 	Response
-	Message string        `json:"message"`
-	Log     []log.Message `json:"log"`
+	Message string          `json:"message"`
+	Log     []pmlog.Message `json:"pmlog"`
 }
 
 func NewProvisioningSuccess(message string) Provisioning {

@@ -1,4 +1,4 @@
-package log
+package pmlog
 
 import (
 	"github.com/fortifi/productmanager-go/pmtime"
