@@ -8,7 +8,7 @@ import (
 type Provisioning struct {
 	Response
 	Message string          `json:"message"`
-	Log     []pmlog.Message `json:"pmlog"`
+	Log     []pmlog.Message `json:"log"`
 }
 
 func NewProvisioningSuccess(message string) *Provisioning {
