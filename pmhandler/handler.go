@@ -147,6 +147,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if jsErr != nil {
 		h.handleErrorWithCode(ErrJsnDecode, jsErr, w, 400)
 	} else if respondErr != nil {
+		h.logger.Printf("unable to handle request: %s", baseReq.Type)
 		h.handleError(respondErr.Error(), respondErr, w)
 	}
 }
