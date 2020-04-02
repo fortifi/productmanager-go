@@ -11,4 +11,5 @@ func NewAvailabilityReserve() *AvailabilityReserve {
 
 type AvailabilityReserve struct {
 	Response
+	Reserved bool
 }
