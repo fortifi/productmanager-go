@@ -1,6 +1,9 @@
 package request
 
-type AvailabilityCheck struct{ Request }
+type AvailabilityCheck struct {
+	Request
+	ReserveKey string `json:"reserveKey"`
+}
 
 func NewAvailabilityCheck() AvailabilityCheck {
 	r := AvailabilityCheck{}
