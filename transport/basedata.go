@@ -17,6 +17,15 @@ func (d *BaseData) IsVerified(productManagerKey string) bool {
 	return d.VerifyHash == fmt.Sprintf("%x", md5.Sum([]byte(d.TransportKey+productManagerKey)))
 }
 
+func (d *BaseData) GetProperty(key string) *Property {
+	for _, prop := range d.Properties {
+		if prop.Key == key {
+			return &prop
+		}
+	}
+	return nil
+}
+
 func (d *BaseData) SetVerificationData(productManagerKey, transportKey string) {
 	if transportKey == "" && d.TransportKey != "" {
 		transportKey = d.TransportKey
