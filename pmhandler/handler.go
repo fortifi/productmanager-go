@@ -10,9 +10,9 @@ import (
 	"os"
 )
 
-const ErrJsnDecode string = "Unable to decode request"
-const ErrJsnEncode string = "Unable to encode response"
-const ErrNoHandler string = "Unable to handle request"
+var ErrJsnDecode = errors.New("unable to decode request")
+var ErrJsnEncode = errors.New("unable to encode response")
+var ErrNoHandler = errors.New("unable to handle request")
 
 type Handler struct {
 	handlers    handlers
@@ -42,7 +42,12 @@ func (h *Handler) handleErrorWithCode(message string, err error, w http.Response
 }
 
 func (h *Handler) handleError(message string, err error, w http.ResponseWriter) {
-	h.handleErrorWithCode(message, err, w, 500)
+	code := 500
+	if err == ErrNoHandler {
+		code = 501
+	}
+
+	h.handleErrorWithCode(message, err, w, code)
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -54,7 +59,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	jsErr := json.Unmarshal(rawJson, baseReq)
 	if jsErr != nil {
-		h.handleErrorWithCode(ErrJsnDecode, jsErr, w, 400)
+		h.handleErrorWithCode(ErrJsnDecode.Error(), jsErr, w, 400)
 		return
 	}
 
@@ -63,7 +68,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	respondErr := errors.New(ErrNoHandler)
+	respondErr := ErrNoHandler
 	switch baseReq.Type {
 	case request.TYPE_AVAILABILITY_CHECK:
 		req := &request.AvailabilityCheck{}
@@ -145,7 +150,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if jsErr != nil {
-		h.handleErrorWithCode(ErrJsnDecode, jsErr, w, 400)
+		h.handleErrorWithCode(ErrJsnDecode.Error(), jsErr, w, 400)
 	} else if respondErr != nil {
 		h.logger.Printf("unable to handle request: %s", baseReq.Type)
 		h.handleError(respondErr.Error(), respondErr, w)
@@ -159,7 +164,7 @@ func (h *Handler) respond(w http.ResponseWriter, resp interface{}, err error) er
 
 	jsnOut, err := json.Marshal(resp)
 	if err != nil {
-		return errors.New(ErrJsnEncode)
+		return errors.New(ErrJsnEncode.Error())
 	}
 
 	w.WriteHeader(200)
