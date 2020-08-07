@@ -7,6 +7,6 @@ type AvailabilityCheck struct {
 
 func NewAvailabilityCheck() AvailabilityCheck {
 	r := AvailabilityCheck{}
-	r.Type = TYPE_AVAILABILITY_CHECK
+	r.Type = TypeAvailabilityCheck
 	return r
 }

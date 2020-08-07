@@ -4,6 +4,6 @@ type ProvisioningActivate struct{ Provisioning }
 
 func NewProvisioningActivate() ProvisioningActivate {
 	r := ProvisioningActivate{}
-	r.Type = TYPE_PROVISION_ACTIVATE
+	r.Type = TypeProvisionActivate
 	return r
 }

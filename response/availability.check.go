@@ -5,7 +5,7 @@ import "github.com/fortifi/productmanager-go/pmtime"
 func NewAvailabilityCheck() *AvailabilityCheck {
 	r := &AvailabilityCheck{}
 	r.Timestamp = pmtime.Now().ForTransport()
-	r.Type = TYPE_AVAILABILITY_CHECK
+	r.Type = TypeAvailabilityCheck
 	return r
 }
 

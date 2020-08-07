@@ -4,6 +4,6 @@ type ProvisioningCancel struct{ Provisioning }
 
 func NewProvisioningCancel() ProvisioningCancel {
 	r := ProvisioningCancel{}
-	r.Type = TYPE_PROVISION_CANCEL
+	r.Type = TypeProvisionCancel
 	return r
 }

@@ -10,6 +10,6 @@ func NewAvailabilityReserve(reserveKey string, reserveTtl int) AvailabilityReser
 	r := AvailabilityReserve{}
 	r.ReserveKey = reserveKey
 	r.ReserveTTL = reserveTtl
-	r.Type = TYPE_AVAILABILITY_RESERVE
+	r.Type = TypeAvailabilityReserve
 	return r
 }

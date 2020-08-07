@@ -70,77 +70,77 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	respondErr := ErrNoHandler
 	switch baseReq.Type {
-	case request.TYPE_AVAILABILITY_CHECK:
+	case request.TypeAvailabilityCheck:
 		req := &request.AvailabilityCheck{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.availabilityCheck != nil {
 			callback := *h.handlers.availabilityCheck
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_AVAILABILITY_RESERVE:
+	case request.TypeAvailabilityReserve:
 		req := &request.AvailabilityReserve{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.availabilityReserve != nil {
 			callback := *h.handlers.availabilityReserve
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_SETUP:
+	case request.TypeProvisionSetup:
 		req := &request.ProvisioningSetup{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionSetup != nil {
 			callback := *h.handlers.provisionSetup
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_ACTIVATE:
+	case request.TypeProvisionActivate:
 		req := &request.ProvisioningActivate{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionActivate != nil {
 			callback := *h.handlers.provisionActivate
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_PROPERTIES_SET:
+	case request.TypeProvisionPropertiesSet:
 		req := &request.ProvisioningPropertiesSet{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionPropertiesSet != nil {
 			callback := *h.handlers.provisionPropertiesSet
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_MODIFY:
+	case request.TypeProvisionModify:
 		req := &request.ProvisioningModify{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionModify != nil {
 			callback := *h.handlers.provisionModify
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_SUSPEND:
+	case request.TypeProvisionSuspend:
 		req := &request.ProvisioningSuspend{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionSuspend != nil {
 			callback := *h.handlers.provisionSuspend
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_REACTIVATE:
+	case request.TypeProvisionReactivate:
 		req := &request.ProvisioningReactivate{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionReactivate != nil {
 			callback := *h.handlers.provisionReactivate
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_CANCEL:
+	case request.TypeProvisionCancel:
 		req := &request.ProvisioningCancel{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionCancel != nil {
 			callback := *h.handlers.provisionCancel
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_PROVISION_TERMINATE:
+	case request.TypeProvisionTerminate:
 		req := &request.ProvisioningTerminate{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionTerminate != nil {
 			callback := *h.handlers.provisionTerminate
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
-	case request.TYPE_HEALTH_CHECK:
+	case request.TypeHealthCheck:
 		req := &request.HealthCheck{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.healthCheck != nil {
 			callback := *h.handlers.healthCheck

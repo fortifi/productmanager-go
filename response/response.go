@@ -7,12 +7,13 @@ import (
 type Type string
 
 const (
-	TYPE_PROVISION_SUCCESS    Type = "provision.success"
-	TYPE_PROVISION_PROCESSING Type = "provision.processing"
-	TYPE_PROVISION_FAILED     Type = "provision.failed"
-	TYPE_AVAILABILITY_CHECK   Type = "availability.check"
-	TYPE_AVAILABILITY_RESERVE Type = "availability.reserve"
-	TYPE_HEALTH_CHECK         Type = "health.check"
+	TypeProvisionSuccess    Type = "provision.success"
+	TypeProvisionProcessing Type = "provision.processing"
+	TypeProvisionFailed     Type = "provision.failed"
+	TypeAvailabilityCheck   Type = "availability.check"
+	TypeAvailabilityReserve Type = "availability.reserve"
+	TypeHealthCheck         Type = "health.check"
+	TypeConfiguration       Type = "configuration"
 )
 
 type Response struct {

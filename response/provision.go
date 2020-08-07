@@ -15,7 +15,7 @@ func NewProvisioningSuccess(message string) *Provisioning {
 	r := &Provisioning{}
 	r.Timestamp = pmtime.Now().ForTransport()
 	r.Message = message
-	r.Type = TYPE_PROVISION_SUCCESS
+	r.Type = TypeProvisionSuccess
 	return r
 }
 
@@ -23,7 +23,7 @@ func NewProvisioningProcessing(message string) *Provisioning {
 	r := &Provisioning{}
 	r.Timestamp = pmtime.Now().ForTransport()
 	r.Message = message
-	r.Type = TYPE_PROVISION_PROCESSING
+	r.Type = TypeProvisionProcessing
 	return r
 }
 
@@ -31,6 +31,6 @@ func NewProvisioningFailed(message string) *Provisioning {
 	r := &Provisioning{}
 	r.Timestamp = pmtime.Now().ForTransport()
 	r.Message = message
-	r.Type = TYPE_PROVISION_FAILED
+	r.Type = TypeProvisionFailed
 	return r
 }

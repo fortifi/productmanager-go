@@ -3,11 +3,11 @@ package transport
 type PropertyType string
 
 const (
-	PROPERTY_TYPE_STRING    PropertyType = "string"
-	PROPERTY_TYPE_FLAG      PropertyType = "flag"
-	PROPERTY_TYPE_COUNT     PropertyType = "count"
-	PROPERTY_TYPE_INC_COUNT PropertyType = "inc.count"
-	PROPERTY_TYPE_DEC_COUNT PropertyType = "dec.count"
+	PropertyTypeString   PropertyType = "string"
+	PropertyTypeFlag     PropertyType = "flag"
+	PropertyTypeCount    PropertyType = "count"
+	PropertyTypeIncCount PropertyType = "inc.count"
+	PropertyTypeDecCount PropertyType = "dec.count"
 )
 
 type Property struct {

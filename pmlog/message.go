@@ -8,11 +8,11 @@ import (
 type Type string
 
 const (
-	TYPE_DEBUG   Type = "debug"
-	TYPE_INFO    Type = "info"
-	TYPE_WARNING Type = "warning"
-	TYPE_ERROR   Type = "error"
-	TYPE_SUCCESS Type = "success"
+	TypeDebug   Type = "debug"
+	TypeInfo    Type = "info"
+	TypeWarning Type = "warning"
+	TypeError   Type = "error"
+	TypeSuccess Type = "success"
 )
 
 type Message struct {
@@ -30,8 +30,8 @@ func NewMessage(messageType Type, message string, time time.Time) Message {
 	}
 }
 
-func Debug(message string) Message   { return NewMessage(TYPE_DEBUG, message, time.Now()) }
-func Info(message string) Message    { return NewMessage(TYPE_INFO, message, time.Now()) }
-func Warning(message string) Message { return NewMessage(TYPE_WARNING, message, time.Now()) }
-func Error(message string) Message   { return NewMessage(TYPE_ERROR, message, time.Now()) }
-func Success(message string) Message { return NewMessage(TYPE_SUCCESS, message, time.Now()) }
+func Debug(message string) Message   { return NewMessage(TypeDebug, message, time.Now()) }
+func Info(message string) Message    { return NewMessage(TypeInfo, message, time.Now()) }
+func Warning(message string) Message { return NewMessage(TypeWarning, message, time.Now()) }
+func Error(message string) Message   { return NewMessage(TypeError, message, time.Now()) }
+func Success(message string) Message { return NewMessage(TypeSuccess, message, time.Now()) }

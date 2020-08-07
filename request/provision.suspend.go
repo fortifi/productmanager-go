@@ -7,6 +7,6 @@ type ProvisioningSuspend struct {
 
 func NewProvisioningSuspend() ProvisioningSuspend {
 	r := ProvisioningSuspend{}
-	r.Type = TYPE_PROVISION_SUSPEND
+	r.Type = TypeProvisionSuspend
 	return r
 }

@@ -4,6 +4,6 @@ type ProvisioningPropertiesSet struct{ Provisioning }
 
 func NewProvisioningPropertiesSet() ProvisioningPropertiesSet {
 	r := ProvisioningPropertiesSet{}
-	r.Type = TYPE_PROVISION_PROPERTIES_SET
+	r.Type = TypeProvisionPropertiesSet
 	return r
 }

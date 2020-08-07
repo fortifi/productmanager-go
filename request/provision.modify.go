@@ -4,6 +4,6 @@ type ProvisioningModify struct{ Provisioning }
 
 func NewProvisioningModify() ProvisioningModify {
 	r := ProvisioningModify{}
-	r.Type = TYPE_PROVISION_MODIFY
+	r.Type = TypeProvisionModify
 	return r
 }

@@ -4,6 +4,6 @@ type ProvisioningTerminate struct{ Provisioning }
 
 func NewProvisioningTerminate() ProvisioningTerminate {
 	r := ProvisioningTerminate{}
-	r.Type = TYPE_PROVISION_TERMINATE
+	r.Type = TypeProvisionTerminate
 	return r
 }
