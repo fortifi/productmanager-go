@@ -38,6 +38,9 @@ func (h *Handler) SetProvisionTerminateHandler(handler func(*request.Provisionin
 func (h *Handler) SetHealthCheckHandler(handler func(*request.HealthCheck) (response.HealthCheck, error)) {
 	h.handlers.healthCheck = &handler
 }
+func (h *Handler) SetConfigurationHandler(handler func(*request.Configuration) (response.Configuration, error)) {
+	h.handlers.configuration = &handler
+}
 
 type handlers struct {
 	availabilityCheck      *func(*request.AvailabilityCheck) (response.AvailabilityCheck, error)
@@ -51,4 +54,5 @@ type handlers struct {
 	provisionCancel        *func(*request.ProvisioningCancel) (response.Provisioning, error)
 	provisionTerminate     *func(*request.ProvisioningTerminate) (response.Provisioning, error)
 	healthCheck            *func(*request.HealthCheck) (response.HealthCheck, error)
+	configuration          *func(*request.Configuration) (response.Configuration, error)
 }

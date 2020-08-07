@@ -147,6 +147,13 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
+	case request.TypeConfiguration:
+		req := &request.Configuration{}
+		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.configuration != nil {
+			callback := *h.handlers.configuration
+			resp, err := callback(req)
+			respondErr = h.respond(w, resp, err)
+		}
 	}
 
 	if jsErr != nil {
