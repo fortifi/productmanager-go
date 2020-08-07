@@ -12,6 +12,7 @@ const (
 type PropertyDefinition struct {
 	Key                string                      `json:"key"`
 	Name               string                      `json:"name"`
+	Description        string                      `json:"description"`
 	DefaultValue       string                      `json:"defaultValue"`
 	Options            map[string]string           `json:"options"`
 	ValidationRegex    string                      `json:"validationRegex"`
