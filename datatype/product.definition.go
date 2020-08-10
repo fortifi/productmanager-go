@@ -10,7 +10,7 @@ type ProductDefinition struct {
 }
 
 type ProductSkuDefinition struct {
-	Sku         string
+	Sku         string               `json:"sku"`
 	Name        string               `json:"name"`
 	Description string               `json:"description"`
 	Properties  []PropertyDefinition `json:"properties"`
