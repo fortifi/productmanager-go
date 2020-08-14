@@ -3,21 +3,22 @@ package transport
 import (
 	"crypto/md5"
 	"fmt"
+	"github.com/fortifi/productmanager-go/datatype"
 	"math/rand"
 )
 
 type BaseData struct {
-	Timestamp    int64      `json:"timestamp"`
-	TransportKey string     `json:"transportKey"`
-	VerifyHash   string     `json:"verifyHash"`
-	Properties   []Property `json:"properties"`
+	Timestamp    int64               `json:"timestamp"`
+	TransportKey string              `json:"transportKey"`
+	VerifyHash   string              `json:"verifyHash"`
+	Properties   []datatype.Property `json:"properties"`
 }
 
 func (d *BaseData) IsVerified(productManagerKey string) bool {
 	return d.VerifyHash == fmt.Sprintf("%x", md5.Sum([]byte(d.TransportKey+productManagerKey)))
 }
 
-func (d *BaseData) GetProperty(key string) *Property {
+func (d *BaseData) GetProperty(key string) *datatype.Property {
 	for _, prop := range d.Properties {
 		if prop.Key == key {
 			return &prop

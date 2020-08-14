@@ -25,8 +25,5 @@ type Request struct {
 	OrgFid      string `json:"orgFid"`
 	BrandFid    string `json:"brandFid"`
 	OrderFid    string `json:"orderFid"`
-	ProductFid  string `json:"productFid"`
-	ProductSku  string `json:"productSku"`
-	PriceFid    string `json:"priceFid"`
 	CustomerFid string `json:"customerFid"`
 }

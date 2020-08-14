@@ -1,8 +1,8 @@
 package response
 
 import (
+	"github.com/fortifi/productmanager-go/datatype"
 	"github.com/fortifi/productmanager-go/pmtime"
-	"github.com/fortifi/productmanager-go/transport"
 )
 
 func NewAvailabilityCheck() *AvailabilityCheck {
@@ -20,6 +20,6 @@ type AvailabilityCheck struct {
 }
 
 type AvailabilityCheckSuggestion struct {
-	Sku        string               `json:"sku"`
-	Properties []transport.Property `json:"properties"`
+	Sku        string              `json:"sku"`
+	Properties []datatype.Property `json:"properties"`
 }

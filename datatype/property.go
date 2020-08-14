@@ -1,4 +1,4 @@
-package transport
+package datatype
 
 type PropertyType string
 
