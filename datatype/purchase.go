@@ -13,3 +13,12 @@ type PurchasedProduct struct {
 	Properties     []Property `json:"properties"`
 	LicenceKey     string     `json:"licenceKey"`
 }
+
+func (d *PurchasedProduct) GetProperty(key string) *Property {
+	for _, prop := range d.Properties {
+		if prop.Key == key {
+			return &prop
+		}
+	}
+	return nil
+}
