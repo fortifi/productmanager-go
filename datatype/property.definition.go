@@ -11,6 +11,7 @@ const (
 
 type PropertyDefinition struct {
 	Key                string                      `json:"key"`
+	GroupKey           string                      `json:"groupKey"`
 	Name               string                      `json:"name"`
 	Description        string                      `json:"description"`
 	DefaultValue       string                      `json:"defaultValue"`
