@@ -14,5 +14,7 @@ func NewConfiguration() *Configuration {
 
 type Configuration struct {
 	Response
-	Products []datatype.ProductDefinition `json:"products"`
+	AuthTokenName string                        `json:"authTokenName"`
+	AuthData      []datatype.PropertyDefinition `json:"authData"`
+	Products      []datatype.ProductDefinition  `json:"products"`
 }
