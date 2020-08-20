@@ -7,6 +7,7 @@ type ProductDefinition struct {
 	Properties  []PropertyDefinition   `json:"properties"`
 	ParentType  string                 `json:"parentType"`
 	Skus        []ProductSkuDefinition `json:"skus"`
+	CanSuspend  bool                   `json:"canSuspend"`
 }
 
 type ProductSkuDefinition struct {
