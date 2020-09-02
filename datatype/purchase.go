@@ -12,6 +12,7 @@ type PurchasedProduct struct {
 	PriceFid       string     `json:"priceFid"`
 	Properties     []Property `json:"properties"`
 	LicenceKey     string     `json:"licenceKey"`
+	Identity       string     `json:"identity"`
 }
 
 func (d *PurchasedProduct) GetProperty(key string) *Property {
