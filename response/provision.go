@@ -11,6 +11,8 @@ type Provisioning struct {
 	Properties []datatype.Property `json:"properties"`
 	Message    string              `json:"message"`
 	Log        []pmlog.Message     `json:"log"`
+	// Identity to set on the subscription.  This should be left blank for no change
+	Identity string `json:"identity"`
 }
 
 func NewProvisioningSuccess(message string) *Provisioning {
