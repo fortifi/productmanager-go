@@ -14,6 +14,8 @@ const (
 	TypeProvisionSuspend       Type = "provision.suspend"
 	TypeProvisionReactivate    Type = "provision.reactivate"
 	TypeProvisionCancel        Type = "provision.cancel"
+	TypeProvisionRenew         Type = "provision.renew"
+	TypeProvisionNotify        Type = "provision.notify"
 	TypeProvisionTerminate     Type = "provision.terminate"
 	TypeHealthCheck            Type = "health.check"
 	TypeConfiguration          Type = "configuration"

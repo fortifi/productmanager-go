@@ -140,6 +140,20 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			resp, err := callback(req)
 			respondErr = h.respond(w, resp, err)
 		}
+	case request.TypeProvisionNotify:
+		req := &request.ProvisioningNotify{}
+		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionNotify != nil {
+			callback := *h.handlers.provisionNotify
+			resp, err := callback(req)
+			respondErr = h.respond(w, resp, err)
+		}
+	case request.TypeProvisionRenew:
+		req := &request.ProvisioningnRenew{}
+		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionRenew != nil {
+			callback := *h.handlers.provisionRenew
+			resp, err := callback(req)
+			respondErr = h.respond(w, resp, err)
+		}
 	case request.TypeHealthCheck:
 		req := &request.HealthCheck{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.healthCheck != nil {
