@@ -1,9 +1,9 @@
 package request
 
-type ProvisioningnRenew struct{ Provisioning }
+type ProvisioningRenew struct{ Provisioning }
 
-func NewProvisioningnRenew() ProvisioningnRenew {
-	r := ProvisioningnRenew{}
+func NewProvisioningRenew() ProvisioningRenew {
+	r := ProvisioningRenew{}
 	r.Type = TypeProvisionRenew
 	return r
 }
