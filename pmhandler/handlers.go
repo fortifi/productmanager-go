@@ -38,7 +38,7 @@ func (h *Handler) SetProvisionTerminateHandler(handler func(*request.Provisionin
 func (h *Handler) SetProvisionNotifyHandler(handler func(*request.ProvisioningNotify) (response.Provisioning, error)) {
 	h.handlers.provisionNotify = &handler
 }
-func (h *Handler) SetProvisionRenewHandler(handler func(*request.ProvisioningnRenew) (response.Provisioning, error)) {
+func (h *Handler) SetProvisionRenewHandler(handler func(*request.ProvisioningRenew) (response.Provisioning, error)) {
 	h.handlers.provisionRenew = &handler
 }
 func (h *Handler) SetHealthCheckHandler(handler func(*request.HealthCheck) (response.HealthCheck, error)) {
@@ -59,7 +59,7 @@ type handlers struct {
 	provisionReactivate    *func(*request.ProvisioningReactivate) (response.Provisioning, error)
 	provisionCancel        *func(*request.ProvisioningCancel) (response.Provisioning, error)
 	provisionTerminate     *func(*request.ProvisioningTerminate) (response.Provisioning, error)
-	provisionRenew         *func(*request.ProvisioningnRenew) (response.Provisioning, error)
+	provisionRenew         *func(*request.ProvisioningRenew) (response.Provisioning, error)
 	provisionNotify        *func(*request.ProvisioningNotify) (response.Provisioning, error)
 	healthCheck            *func(*request.HealthCheck) (response.HealthCheck, error)
 	configuration          *func(*request.Configuration) (response.Configuration, error)

@@ -148,7 +148,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			respondErr = h.respond(w, resp, err)
 		}
 	case request.TypeProvisionRenew:
-		req := &request.ProvisioningnRenew{}
+		req := &request.ProvisioningRenew{}
 		if jsErr = json.Unmarshal(rawJson, req); jsErr == nil && h.handlers.provisionRenew != nil {
 			callback := *h.handlers.provisionRenew
 			resp, err := callback(req)
