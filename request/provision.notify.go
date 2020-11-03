@@ -13,7 +13,7 @@ const (
 type ProvisioningNotify struct {
 	Provisioning                            // Full provisioning information before the child is modified
 	Reason        ProvisioningNotifyReason  // reason for notification
-	ModifiedChild datatype.PurchasedProduct // Full info on child being added or removed
+	ModifiedChild datatype.PurchasedProduct `json:"modifiedChild"` // Full info on child being added or removed
 }
 
 func NewProvisioningNotify() ProvisioningNotify {
