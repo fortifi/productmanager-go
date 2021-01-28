@@ -10,6 +10,7 @@ const (
 	TypeProvisionSuccess    Type = "provision.success"
 	TypeProvisionProcessing Type = "provision.processing"
 	TypeProvisionFailed     Type = "provision.failed"
+	TypeProvisionRetry      Type = "provision.retry"
 	TypeAvailabilityCheck   Type = "availability.check"
 	TypeAvailabilityReserve Type = "availability.reserve"
 	TypeHealthCheck         Type = "health.check"

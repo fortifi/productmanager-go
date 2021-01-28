@@ -38,3 +38,11 @@ func NewProvisioningFailed(message string) *Provisioning {
 	r.Type = TypeProvisionFailed
 	return r
 }
+
+func NewProvisioningRetry(message string) *Provisioning {
+	r := &Provisioning{}
+	r.Timestamp = pmtime.Now().ForTransport()
+	r.Message = message
+	r.Type = TypeProvisionRetry
+	return r
+}
