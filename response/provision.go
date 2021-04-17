@@ -13,6 +13,8 @@ type Provisioning struct {
 	Log        []pmlog.Message     `json:"log"`
 	// Identity to set on the subscription.  This should be left blank for no change
 	Identity string `json:"identity"`
+	// MinimumDelay retry not before seconds
+	MinimumDelay int `json:"minimumDelay"`
 }
 
 func NewProvisioningSuccess(message string) *Provisioning {
